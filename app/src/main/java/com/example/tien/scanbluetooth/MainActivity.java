@@ -22,7 +22,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             timings.addSplit("work B");
               startnow = System.nanoTime();
-
+            Date currentTime = Calendar.getInstance().getTime();
             String action = intent.getAction();
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 mDeviceList = new ArrayList<BluetoothDevice>();
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 endnow = System.nanoTime();
                 long timeEnd = (endnow - startnow)/1000000;
                // rssi_msg.setText( "\n" + deviceHardwareAddress +  " | " + rssi_msg.getText()  + " | " +  deviceName + " |  "  + rssi + " dBm"   +  " | time process: " + timeEnd+ " milliseconds" );
-    rssi_msg.setText("\n" + rssi_msg.getText() + " Device Name " + deviceName  + " | Device Address  " + deviceHardwareAddress + "\n" +  " Signal Strength : " + rssi + "dBm.\n"  + " | time process: " + timeEnd + " milliseconds" + "\n\n");
+    rssi_msg.setText("\n"  + rssi_msg.getText() +   currentTime + " Device Name " + deviceName  + " | Device Address  " + deviceHardwareAddress + "\n" +  " Signal Strength : " + rssi + "dBm.\n"  + " | time process: " + timeEnd + " milliseconds" + "\n\n");
                 //rssi_msg.setText("Device Name " + deviceName + " | " + deviceHardwareAddress + " | " + rssi + " dBm\n" +  " | time process: " + timeEx + " milliseconds");
 
             }
