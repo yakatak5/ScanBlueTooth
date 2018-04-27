@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public ListView listView;
     public ArrayList<BluetoothDevice> mDeviceList = new ArrayList<BluetoothDevice>();
     RequestQueue requestQueue;
-    String insertUrl = "http://10.176.138.38/log/insert.php";
+    String insertUrl = "http://10.176.138.38/log/insert.php"; 
     private long startnow = 0;
     private long endnow = 0;
     private static final String MYTAG = "MyActivity";
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 rssi_msg = (TextView) findViewById(R.id.textView);
                 endnow = System.nanoTime();
                 timeEnd = (endnow - startnow)/1000000;
-                
+
                 // rssi_msg.setText( "\n" + deviceHardwareAddress +  " | " + rssi_msg.getText()  + " | " +  deviceName + " |  "  + rssi + " dBm"   +  " | time process: " + timeEnd+ " milliseconds" );
                 rssi_msg.setText("\n"  + rssi_msg.getText() +   currentTime + " Device Name " + deviceName  + " | Device Address  " + deviceHardwareAddress + "\n" +  " Signal Strength : " + rssi + "dBm.\n"  + " | time process: " + timeEnd + " milliseconds" + "\n\n");
                 //rssi_msg.setText("Device Name " + deviceName + " | " + deviceHardwareAddress + " | " + rssi + " dBm\n" +  " | time process: " + timeEx + " milliseconds");
@@ -125,11 +125,11 @@ public class MainActivity extends AppCompatActivity {
                         parameters.put("start", (timeEnd + "ms") );
 
                         return parameters;
-                    }
+                    }//gathers parameters for POST request
 
-                };
+                }; //POST request to push info to database
                 requestQueue.add(request);
-            }
+            }//Gathers information from broadcasting device and pushes to database with POST request
 
         }
 
